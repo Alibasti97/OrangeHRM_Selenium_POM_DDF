@@ -38,5 +38,25 @@ public class orangemain {
             System.out.println("You can assign leave now");
         }
 
+        HRMPOM manageuser = new HRMPOM(driver);
+        manageuser.Usermanage();
+
+//        String sysus = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-header > div.oxd-table-filter-header-title > h5")).getText());
+//        if (sysus.equals("System Users")){
+//           // System.out.println("Search for Users");
+//        }
+//
+//        String empnam = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.orangehrm-paper-container > div.orangehrm-container > div > div.oxd-table-body > div > div > div:nth-child(4) > div")).getText());
+//        if (empnam.contains("Paul")){
+//            System.out.println("Search Successfull");
+//        }
+
+        String recordfound = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.orangehrm-paper-container > div:nth-child(2) > div > span")).getText());
+        if (recordfound.matches("(0) Records Found")){
+            System.out.println("No Record Found");
+        }else {
+            System.out.println(recordfound + "Record Found");
+        }
+
     }
 }

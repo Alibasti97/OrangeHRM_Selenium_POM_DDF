@@ -43,6 +43,17 @@ Properties prop = confighrm.getProps("data");
      By assignbtn = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.oxd-form-actions > button");
 
      By confirmassign = new By.ByCssSelector("#app > div.oxd-overlay.oxd-overlay--flex.oxd-overlay--flex-centered > div > div > div > div.orangehrm-modal-footer > button.oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-button-margin");
+
+     By admin = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-navigation > aside > nav > div.oxd-sidepanel-body > ul > li:nth-child(1)");
+
+     By usernamesys = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-row > div > div:nth-child(1) > div > div:nth-child(2) > input");
+
+     By roleuser = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-row > div > div:nth-child(2) > div > div:nth-child(2) > div > div > div.oxd-select-text--after > i");
+
+     By nameemp = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-row > div > div:nth-child(3) > div > div:nth-child(2) > div > div > input");
+     By statusus = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-row > div > div:nth-child(4) > div > div:nth-child(2) > div > div > div.oxd-select-text--after > i");
+     By searchbtnck = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-actions > button.oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-left-space");
+
 HRMPOM(WebDriver driver){
     this.driver=driver;
 }
@@ -110,6 +121,50 @@ HRMPOM(WebDriver driver){
 
             driver.findElement(confirmassign).click();
         }
+
+        public void Usermanage() throws InterruptedException {
+
+    //Clicking on Admin from Side Menu
+        driver.findElement(admin).click();
+
+        //Searching System Users
+            Thread.sleep(5000);
+
+            driver.findElement(usernamesys).sendKeys(prop.getProperty("Username"));
+// Choosing User Role
+            WebElement userrole = driver.findElement(roleuser);
+            userrole.click();
+            Thread.sleep(3000);
+            Actions actions = new Actions(driver);
+            Thread.sleep(3000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ARROW_UP).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+            Thread.sleep(3000);
+
+            //Selecting employee Name
+
+             WebElement empnamee = driver.findElement(nameemp);
+             empnamee.sendKeys("Paul");
+            Thread.sleep(3000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+             actions.sendKeys(Keys.ENTER).perform();
+            Thread.sleep(3000);
+
+            //Changing Status
+
+            WebElement userstatus = driver.findElement(statusus);
+            userstatus.click();
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+
+            //Search Button
+
+            driver.findElement(searchbtnck).click();
+
+        }
+
+
 
 }
 
