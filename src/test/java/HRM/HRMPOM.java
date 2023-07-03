@@ -54,6 +54,19 @@ Properties prop = confighrm.getProps("data");
      By statusus = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-row > div > div:nth-child(4) > div > div:nth-child(2) > div > div > div.oxd-select-text--after > i");
      By searchbtnck = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-area > form > div.oxd-form-actions > button.oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-left-space");
 
+     By roleofuser = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(1) > div > div:nth-child(2) > div > div > div.oxd-select-text--after > i");
+
+     By emppname = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(2) > div > div:nth-child(2) > div > div");
+
+     By statusofuser = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(3) > div > div:nth-child(2) > div > div > div.oxd-select-text--after > i");
+
+     By usname = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div:nth-child(1) > div > div:nth-child(4) > div > div:nth-child(2) > input");
+
+     By passw = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.oxd-form-row.user-password-row > div > div.oxd-grid-item.oxd-grid-item--gutters.user-password-cell > div > div:nth-child(2) > input");
+
+     By passcw = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.oxd-form-row.user-password-row > div > div:nth-child(2) > div > div:nth-child(2) > input");
+
+     By createuserbtn = new By.ByCssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.oxd-form-actions > button.oxd-button.oxd-button--medium.oxd-button--secondary.orangehrm-left-space");
 HRMPOM(WebDriver driver){
     this.driver=driver;
 }
@@ -161,6 +174,39 @@ HRMPOM(WebDriver driver){
             //Search Button
 
             driver.findElement(searchbtnck).click();
+            Thread.sleep(3000);
+
+        }
+
+        public void adduser() throws InterruptedException {
+
+            driver.findElement(roleofuser).click();
+            Thread.sleep(3000);
+            Actions actions = new Actions(driver);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+
+            driver.findElement(emppname).sendKeys("Ali");
+            Thread.sleep(3000);
+            actions.sendKeys(Keys.ARROW_DOWN);
+            actions.sendKeys(Keys.ENTER);
+
+            driver.findElement(statusofuser).click();
+            Thread.sleep(3000);
+            actions.sendKeys(Keys.ARROW_DOWN).perform();
+            actions.sendKeys(Keys.ENTER).perform();
+
+            driver.findElement(usname).sendKeys("Alibasti97");
+            Thread.sleep(3000);
+
+            driver.findElement(passw).sendKeys("Basti@000");
+            Thread.sleep(3000);
+
+            driver.findElement(passcw).sendKeys("Basti@000");
+            Thread.sleep(3000);
+
+            driver.findElement(createuserbtn).click();
+
 
         }
 

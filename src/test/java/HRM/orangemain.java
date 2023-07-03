@@ -41,21 +41,16 @@ public class orangemain {
         HRMPOM manageuser = new HRMPOM(driver);
         manageuser.Usermanage();
 
-//        String sysus = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.oxd-table-filter > div.oxd-table-filter-header > div.oxd-table-filter-header-title > h5")).getText());
-//        if (sysus.equals("System Users")){
-//           // System.out.println("Search for Users");
-//        }
-//
-//        String empnam = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.orangehrm-paper-container > div.orangehrm-container > div > div.oxd-table-body > div > div > div:nth-child(4) > div")).getText());
-//        if (empnam.contains("Paul")){
-//            System.out.println("Search Successfull");
-//        }
+        HRMPOM adduser = new HRMPOM(driver);
+        adduser.adduser();
 
-        String recordfound = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div.orangehrm-paper-container > div:nth-child(2) > div > span")).getText());
-        if (recordfound.matches("(0) Records Found")){
-            System.out.println("No Record Found");
-        }else {
-            System.out.println(recordfound + "Record Found");
+
+        
+        String verifypass = new String(driver.findElement(By.cssSelector("#app > div.oxd-layout > div.oxd-layout-container > div.oxd-layout-context > div > div > form > div.oxd-form-row.user-password-row > div > div.oxd-grid-item.oxd-grid-item--gutters.user-password-cell > span")).getText());
+        if (verifypass.equals("Better")){
+            System.out.println("Password is strong enough");
+        } else if (verifypass.equals("Weak")) {
+            System.out.println("Password is not Strong enough");
         }
 
     }
